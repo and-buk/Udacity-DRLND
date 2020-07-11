@@ -50,6 +50,6 @@ The repository contains five files:
 - `model.py`: Neural network model with dueling architecture 
 - `Navigation.ipynb`: The code to explore the environment and train the DDQN agent
 - `checkpoint.pth`: Saved trained model weights of the successful agent
-- `Report.ipynb`: Description of implementation
+- `Report.pdf`: Description of implementation
 
 Follow the instructions in `Navigation.ipynb` to get started with training the agent.
