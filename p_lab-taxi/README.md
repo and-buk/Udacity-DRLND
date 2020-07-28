@@ -5,7 +5,7 @@
 
 We use OpenAI Gym's Taxi-v3 environment ([**the code here**](https://github.com/openai/gym/blob/master/gym/envs/toy_text/taxi.py)) and Temporal-Difference (TD) control methods to teach a taxi agent to navigate a small gridworld.
 
-The Reinforcement Learning task based on [**this paper**](https://arxiv.org/pdf/cs/9905014.pdf).
+The Reinforcement Learning task (Taxi problem) based on [**this paper**](https://arxiv.org/pdf/cs/9905014.pdf).
 
 ### The environment description
 
@@ -25,7 +25,7 @@ Temporal-Difference (TD) control methods: `Sarsa (Sarsa(0))`, `Sarsamax (Q-learn
 
 As the environment has small state spaces we represent the optimal action-value function in table with one row for each state and one column for each action (Q-table).
 
-Using information about agent-envinronment interaction (states, actions and rewards) and presented below update rules we change Q-table values. 
+Using information about agent-environment interaction (states, actions and rewards) and presented below update rules we change Q-table values. 
 
 <p align="center">
   <img src="https://github.com/and-buk/reinforcement-learning/blob/master/p_lab-taxi/images/Sarsa.png" width="650">
@@ -44,6 +44,16 @@ Using information about agent-envinronment interaction (states, actions and rewa
 
 To construct the optimal policy, we select the entries that maximize the action-value function (Q-table values) for each row (or state).
 
-## Getting Started
+## Getting started
 
-## Instructions
+The repository contains three sub-repositories with algorithms implementation, one for each TD control methods.
+
+
+Install packages required to working the code in each sub-repository:
+- Python 3.6 and higher
+- `gym` (toolkit for developing and comparing reinforcement learning algorithms)
+- NumPy, Matplotlib
+
+Follow the instructions inside each repository.
+
+## Analyzing perfomance
