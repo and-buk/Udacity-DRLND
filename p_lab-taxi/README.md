@@ -21,7 +21,7 @@ As a taxi driver, you need to pick up and drop off passengers as fast as possibl
 
 As we know to define a reinforcement learning task, we generally use Markov Decision Process (MDP) to model the environment. The MDP specifies the rules that the environment uses to respond to the agent's actions, including how much reward to give to the agent in response to its behavior. The agent's goal is to learn how to play by the rules of the environment, in order to maximize reward. In other words agent needs to find the optimal policy.
 
-Temporal-Difference (TD) control methods: `Sarsa (Sarsa(0))`, `Sarsamax (Q-learning)`, `Expected Sarsa` or value iteration algorithms estimate the action-value function by using the Bellman equation as an iterative update. All of them converge to the optimal action-value function (and so yield the optimal policy)
+Temporal-Difference (TD) control methods: `Sarsa`, `Sarsamax (Q-learning)`, `Expected Sarsa` or value iteration algorithms estimate the action-value function by using the Bellman equation as an iterative update. All of them converge to the optimal action-value function (and so yield the optimal policy)
 
 As the environment has small state spaces we represent the optimal action-value function in table with one row for each state and one column for each action (Q-table).
 
@@ -29,7 +29,7 @@ Using information about agent-environment interaction (states, actions and rewar
 
 <p align="center">
   <img src="https://github.com/and-buk/reinforcement-learning/blob/master/p_lab-taxi/images/Sarsa.png" width="650">
-  <em> Sarsa (Sarsa(0)) </em>
+  <em> Sarsa </em>
 </p>
 
 <p align="center">
