@@ -26,4 +26,9 @@ Key components of **DDPG**:
 - Estimate the weights of a critic network through gradient descent.
 - **Batch normalization technique**: To minimize covariance shift during training, by ensuring that each network's layer receives whitened input.
 
+Amendments to **DDGP** algorithm (to make the code work with 20 agents):
+- Each agent adds its experience to a replay buffer that is shared by all agents, and
+- The (local) actor and critic networks are updated 10 times (`UPDATE_FREQ`) after every 20 timesteps (`UPDATE_EVERY`) in row (one for each agent), using different samples from the buffer.
+- Using gradient clipping technique when training the critic network.
+
 
