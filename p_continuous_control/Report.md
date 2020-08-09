@@ -11,11 +11,25 @@ Implement an algorithm that allows to solve the environment task with an average
 
 Reinforcement Learning is about learning an optimal policy from interaction with the environment. With **value-based methods**, the agent uses its experience with the environment to maintain an estimate of the optimal action-value function. The optimal policy is then obtained from the optimal action-value function estimate. **Policy-based methods** directly learn the optimal policy, without having to maintain a separate value function estimate. **Policy gradient methods** are a subclass of policy-based methods that estimate the weights of an optimal policy through gradient ascent.
 
+### Strengths of policy-based methods: 
+
+**Simplicity**: The problem with value-based methods is that they can have a big oscillation while training. This is because the choice of action may change dramatically for an arbitrarily small change in the estimated action values. Policy-based methods directly get to the problem at hand (estimating the optimal policy). This tends to make them stable and reliable.
+
+**Stochastic policies**: Policy-based methods can learn true stochastic policies (a value-based methods tends to learn a deterministic or near deterministic policy).
+
+**Continuous action spaces**: Policy-based methods are well-suited for continuous and high-dimensional action spaces.
+
+### Weakness of policy-based methods:
+
+**Data-inefficient**: Policy-based methods are data-inefficient and rely on a lot of data to learn a useful policy.
+
+**High variance**: A critical challenge of policy gradient methods is the high variance of the gradient estimator and therefore *slow convergence (slow learning)*. Policy gradient methods are able to compute an unbiased gradient, but suffer from high variance.
+
 ## Algorithm Selection 
 
 To solve version 2 of the environment with continuous action space we use **Deep Deterministic Policy Gradients (DDPG)** algorithm ([**more detail in paper**](https://arxiv.org/abs/1509.02971)) specifically adapted to work for multiple agents.
 
-**DDPG** is a model-free, off-policy, actor-critic algorithm, which concurrently learns a deterministic policy and a Q-functon by using each to improve the other. It uses off-policy data and the Bellman equation to learn the Q-function, and the Q-function to learn the policy.
+**DDPG** is a **model-free**, **off-policy**, **actor-critic algorithm**, which concurrently learns a deterministic policy and a Q-functon by using each to improve the other. It uses off-policy data and the Bellman equation to learn the Q-function, and the Q-function to learn the policy.
 
 ### Key components of **DDPG**
 - **Actor-critic architecture** with two elements, actor and critic.
