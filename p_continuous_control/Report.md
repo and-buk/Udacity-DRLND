@@ -11,19 +11,19 @@ Implement an algorithm that allows to solve the environment task with an average
 
 Reinforcement Learning is about learning an optimal policy from interaction with the environment. With **value-based methods**, the agent uses its experience with the environment to maintain an estimate of the optimal action-value function. The optimal policy is then obtained from the optimal action-value function estimate. **Policy-based methods** directly learn the optimal policy, without having to maintain a separate value function estimate. **Policy gradient methods** are a subclass of policy-based methods that estimate the weights of an optimal policy through gradient ascent.
 
-### Strengths of policy-based methods: 
+**Strengths of policy-based methods**: 
 
-**Simplicity**: The problem with value-based methods is that they can have a big oscillation while training. This is because the choice of action may change dramatically for an arbitrarily small change in the estimated action values. Policy-based methods directly get to the problem at hand (estimating the optimal policy). This tends to make them stable and reliable.
+ - **Simplicity**: The problem with value-based methods is that they can have a big oscillation while training. This is because the choice of action may change dramatically for an arbitrarily small change in the estimated action values. Policy-based methods directly get to the problem at hand (estimating the optimal policy). This tends to make them stable and reliable.
 
-**Stochastic policies**: Policy-based methods can learn true stochastic policies (a value-based methods tends to learn a deterministic or near deterministic policy).
+- **Stochastic policies**: Policy-based methods can learn true stochastic policies (a value-based methods tends to learn a deterministic or near deterministic policy).
 
-**Continuous action spaces**: Policy-based methods are well-suited for continuous and high-dimensional action spaces.
+- **Continuous action spaces**: Policy-based methods are well-suited for continuous and high-dimensional action spaces.
 
-### Weakness of policy-based methods:
+**Weakness of policy-based methods**:
 
-**Data-inefficient**: Policy-based methods are data-inefficient and rely on a lot of data to learn a useful policy.
+- **Data-inefficient**: Policy-based methods are data-inefficient and rely on a lot of data to learn a useful policy.
 
-**High variance**: A critical challenge of policy gradient methods is the high variance of the gradient estimator and therefore *slow convergence (slow learning)*. Policy gradient methods are able to compute an unbiased gradient, but suffer from high variance.
+- **High variance**: A critical challenge of policy gradient methods is the high variance of the gradient estimator and therefore *slow convergence (slow learning)*. Policy gradient methods are able to compute an unbiased gradient, but suffer from high variance.
 
 ## Algorithm Selection 
 
