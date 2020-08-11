@@ -25,11 +25,16 @@ Reinforcement Learning is about learning an optimal policy from interaction with
 
 - **High variance**: A critical challenge of policy gradient methods is the high variance of the gradient estimator and therefore *slow convergence (slow learning)*. Policy gradient methods are able to compute an unbiased gradient, but suffer from high variance.
 
+**Actor-critic methods** are able to trade-off between the strengths and weaknesses of value-based and policy-based approaches:
+- They use value-based techniques to further reduce the variance of policy-based methods and increase the learning speed respectively.
+- They have more consistent and smooth convergence than value-based methods, therefore more stable.
+- Need fewer samples than policy-based methods.
+
 ## Algorithm Selection 
 
 To solve version 2 of the environment with continuous action space we use **Deep Deterministic Policy Gradients (DDPG)** algorithm ([**more detail in paper**](https://arxiv.org/abs/1509.02971)) specifically adapted to work for multiple agents.
 
-**DDPG** is a **model-free**, **off-policy**, **actor-critic algorithm**, which concurrently learns a deterministic policy and a Q-functon by using each to improve the other. It uses off-policy data and the Bellman equation to learn the Q-function, and the Q-function to learn the policy.
+**DDPG** is a **model-free**, **off-policy**, **actor-critic algorithm**, which concurrently learns a deterministic policy and a Q-functon by using each to improve the other. It uses off-policy data and the Bellman equation to learn the Q-function (*policy evaluation - compute the value function for a policy*), and the Q-function to learn the policy (*policy improvement - use the value function to obtain a better policy*).
 
 ### Key components of **DDPG**
 - **Actor-critic architecture** with two elements, actor and critic.
