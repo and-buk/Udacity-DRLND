@@ -40,6 +40,9 @@ To solve version 2 of the environment with continuous action space we use **Deep
 - **Actor-critic architecture** with two elements, actor and critic.
   - Actor: Parameterized function ***&mu;(s|&theta;<sup>&mu;</sup>)*** that specifies the current policy by deterministically mapping states to a specific action.
   - Critic: The critic ***Q(s, a|&theta;<sup>Q</sup>)*** is learned using the Bellman equation as in Q-learning.
+
+The *deterministic* actor maximizes the output of the critic. Critic equates the value of the actor output (action) to returns observed in reality. 
+
 - As in Deep Q-network to adapt the Q-learning algorithm in order to make effective use of large neural networks as function approximators and avoid instability of learning are used **two important techniques**:
   - **Experience Replay**: The actor and critic networks are trained off-policy with samples uniformly  from replay buffer to minimize correlations between samples.
   - Separate **target network**: The critic network is trained with both actor and critic target networks to give consistent target values during temporal difference backups.
@@ -47,7 +50,7 @@ To solve version 2 of the environment with continuous action space we use **Deep
 - **“Soft” target updates**: The weights of targets networks are updated by having them slowly track the learned networks, so the target values are constrained to change slowly, greatly improving the stability of learning.
 - Estimate the weights of an actor policy through gradient ascent.
 - Estimate the weights of a critic network through gradient descent.
-- **Batch normalization technique**: To minimize covariance shift during training, by ensuring that each network's layer receives whitened input.
+- **Batch normalization technique**: This technique normalizes each dimension across the samples in minibatch to have unit mean and variance. To minimize covariance shift during training, by ensuring that each network's layer receives whitened input.
 
 ### Amendments to **DDGP** algorithm (to make the code work with 20 agents)
 - Each agent adds its experience to a replay buffer that is shared by all agents, and
