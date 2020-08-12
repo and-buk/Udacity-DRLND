@@ -63,3 +63,14 @@ The environment is considered solved, when the average (over 100 episodes) of th
 3. Place the file in folder with other repository files, and unzip (or decompress) the file. 
 
 ### Instructions
+
+The repository contains six files:
+
+- `DDPG_agent.py`: Implementation of the DDPG agent 
+- `model.py`: Implementation of actor and critic neural networks 
+- `Continuous_Control.ipynb`: The code to explore the environment and train the DDPG agent
+- `checkpoint_actor.pth`: Saved trained actor network weights of the successful agent
+- `checkpoint_critic.pth`: Saved trained critic network weights of the successful agent
+- `Report.md`: Description of implementation
+
+Follow the instructions in `Continuous_Control.ipynb` to get started with training the DDPG agent.
