@@ -5,7 +5,7 @@ Using **actor-critic method** for reinforcement learning we trained a double-joi
 
 ## Project Objective 
 
-Implement an algorithm that allows to solve the environment task with an average score of +30 over all agents over 100 consecutive episodes.
+Implement an algorithm that allows to solve the environment task with an average score of +30 obtained from all agents (20) for 100 consecutive episodes.
 
 ## Introduction
 
@@ -21,7 +21,7 @@ Reinforcement Learning is about learning an optimal policy from interaction with
 
 **Weakness of policy-based methods**:
 
-- **Data-inefficient**: Policy-based methods are data-inefficient and rely on a lot of data to learn a useful policy.
+- **Data-inefficient**: Policy-based methods are data-inefficient and rely on a large number of samples to learn a useful policy.
 
 - **High variance**: A critical challenge of policy gradient methods is the high variance of the gradient estimator and therefore *slow convergence (slow learning)*. Policy gradient methods are able to compute an unbiased gradient, but suffer from high variance.
 
@@ -58,7 +58,18 @@ The *deterministic* actor maximizes the output of the critic. Critic equates the
 - Using gradient clipping technique when training the critic network.
 
 ### Hyperparameters and model architecture description
-For learning the neural network parameters we use `Adam algorithm` with a learning rate of 10<sup>-4</sup> and 10<sup>-3</sup> for the actor (`LR_ACTOR`) and critic (`LR_CRITIC`) networks respectively. For compute Q target we use a discount factor (`GAMMA`) of = 0.99. For the soft target updates we use &tau; (`TAU`) = 0.001. The neural networks use the rectified non-linearity for all hidden layers. Since every entry in the action must be a number between -1 and 1 we add a tanh activation function to the final output layer of the actor network. The actor network has 3 hidden layers with 128, 256 and 512 units respectively. The critic network has 2 hidden layers with 128 and 256 units respectively.
-Actions are not included until the 2nd hidden layer of critic network. The final layer weights and biases of both the actor and critic networks are initialized from a uniform distribution [-3 х 10<sup>-3</sup>, 3 х 10<sup>-3</sup>] to provide the initial outputs for the policy and value estimates are near zero. The other layers are initialized from uniform distributions [-1/<span class="radic"><sup><var></var></sup>√</span><span class="radicand"><var>f</var></span>, 1/<span class="radic"><sup><var></var></sup>√</span><span class="radicand"><var>f</var></span>] where *f* is the fan-in of the layer. We train with minibatch sizes (`BATCH_SIZE`) of 128 and use a replay buffer size (`BUFFER_SIZE`) of 1000000. For the exploration noise process we use an *Ornstein-Uhlenbeck process* with &theta; = 0.15 and &sigma; = 0.2.
+For learning the neural network parameters we use `Adam algorithm` with a learning rate of 10<sup>-4</sup> and 10<sup>-3</sup> for the actor (`LR_ACTOR`) and critic (`LR_CRITIC`) networks respectively. For compute Q target we use a discount factor (`GAMMA`) of = 0.99. For the soft target updates we use &tau; (`TAU`) = 0.001. The neural networks use the rectified non-linearity for all hidden layers. Since every entry in the action must be a number between -1 and 1 we add a tanh activation function to the final output layer of the actor network. The actor network has 3 hidden layers with 89, 144 and 233 units respectively. The critic network has 2 hidden layers with 144 and 233 units respectively. We use *batch normalization* on all layers of both networks. The actor network to avoid overfitting has dropout layers with probability 0.1. 
+Actions are not included until the 2nd hidden layer of critic network. The final layer weights and biases of both the actor and critic networks are initialized from a uniform distribution [-3 х 10<sup>-3</sup>, 3 х 10<sup>-3</sup>] to provide the initial outputs for the policy and value estimates are near zero. The other layers are initialized from uniform distributions [-1/<span class="radic"><sup><var></var></sup>√</span><span class="radicand"><var>f</var></span>, 1/<span class="radic"><sup><var></var></sup>√</span><span class="radicand"><var>f</var></span>] where *f* is the fan-in of the layer. We train with minibatch sizes (`BATCH_SIZE`) of 128 and use a replay buffer size (`BUFFER_SIZE`) of 1000000. For the exploration noise process we use an *Ornstein-Uhlenbeck process* with &theta; = 0.15 and &sigma; = 0.2. &sigma; evenly decreases from 0.2 to 0.008 in the range of received average reward from 30 to 40.
 
 ## Conclusion
+
+<p align="left">
+  <img src="https://github.com/and-buk/reinforcement-learning/blob/master/p_continuous_control/images/final_plot.png" width="550">
+</p>
+Environment solved in 100 episodes!	Average Score: 33.72
+
+## Ideas for future
+
+- Despite the fact that task is complete, the final plot doesn't look well. There is a high variance between average scores from episode to episode during training. The agent's behavior doesn't stable. To improve it, in my opinion, it is necessary to continue experimenting with architecture of both networks (reduce the number of hidden layers of actor network and/or hidden layers units, add dropout layers into critic network, etc.) and tuning hyperparameters.
+
+- Implement more stable, without extreme brittleness and hyperparameter sensitivity off-policy **soft actor-critic (SAC)** algorithm that, in practice, exceeds both the efficiency and final performance of DDPG ([**more detail in paper**](https://arxiv.org/abs/1801.01290)).
