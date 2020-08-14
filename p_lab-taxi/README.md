@@ -1,9 +1,9 @@
-# Mini project: Taxi-v3
+# Mini project: Taxi problem
 ([**Deep Reinforcement Learning Nanodegree**](https://www.udacity.com/course/deep-reinforcement-learning-nanodegree--nd893) coding exercise)
 
 ## Introduction
 
-We use OpenAI Gym's Taxi-v3 environment ([**the code here**](https://github.com/openai/gym/blob/master/gym/envs/toy_text/taxi.py)) and Temporal-Difference (TD) control methods to teach a taxi agent to navigate a small gridworld.
+We use OpenAI Gym's **Taxi-v3 environment** ([**the code here**](https://github.com/openai/gym/blob/master/gym/envs/toy_text/taxi.py)) and Temporal-Difference (TD) control methods to teach a taxi agent to navigate a small gridworld.
 
 The Reinforcement Learning task (Taxi problem) based on [**this paper**](https://arxiv.org/pdf/cs/9905014.pdf).
 
@@ -44,6 +44,11 @@ Using information about agent-environment interaction (states, actions and rewar
 
 To construct the optimal policy, we select the entries that maximize the action-value function (Q-table values) for each row (or state).
 
+### Differences
+
+- `Sarsa` and `Expected Sarsa` are both **on-policy** TD control algorithms. In this case, the same (*&straightepsilon;*-greedy) policy that is evaluated and improved also used to select actions.
+- `Sarsamax` is **off-policy** method, where the (greedy) policy that is evaluated and improved is different from the (*&straightepsilon;*-greedy) policy that is used to select actions.  
+
 ## Getting started
 
 The repository contains three sub-repositories with algorithms implementation, one for each TD control methods.
@@ -57,3 +62,15 @@ Install packages required to working the code in each sub-repository:
 Follow the instructions inside each repository.
 
 ## Analyzing perfomance
+
+| TD control method    | Mean |  SD | Min.| Max.|
+| :---:                |:---: |:---:|:---:|:---:|
+| Sarsa                | 8.83 | 0.08|8.64 |9.05 |
+| Sarsamax (Q-learning)| 8.84 | 0.1 |8.63 |9.05 |
+| Expected Sarsa       | 8.75 | 0.13|8.44 |9.17 |
+
+<p align="left">
+  <img src="https://github.com/and-buk/reinforcement-learning/blob/master/p_lab-taxi/images/Histogram.png" width="550">
+<p align="left">  
+  <em> The frequency distribution histogram of average rewards for 100 trials (each trial = 20000 episodes) </em>
+</p>
