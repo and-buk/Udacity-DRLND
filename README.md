@@ -8,4 +8,4 @@ This repository contains my completed project solutions for [**Deep Reinforcemen
 
 - **[p_continuous_control](https://github.com/and-buk/Udacity-DRLND/tree/master/p_continuous_control)**: Implementation of *amended* **Deep Deterministic Policy Gradients (DDPG) algorithm** *specifically adapted to work for multiple agents* to solve the [**Reacher**](https://github.com/Unity-Technologies/ml-agents/blob/master/docs/Learning-Environment-Examples.md#reacher) environment with continuous action space.
 
-- **[p_collaboration_and_competition](https://github.com/and-buk/Udacity-DRLND/tree/master/p_collaboration_and_competition)**: In progress.
+- **[p_collaboration_and_competition](https://github.com/and-buk/Udacity-DRLND/tree/master/p_collaboration_and_competition)**: Implementation of **Multi-Agent Deep Deterministic Policy Gradients (MADDPG) algorithm** to solve the specially prepared environment which require multiple agents to work together (*similar to, but not identical to the Tennis environment on the [Unity ML-Agents GitHub page](https://github.com/Unity-Technologies/ml-agents/blob/master/docs/Learning-Environment-Examples.md)*). 
